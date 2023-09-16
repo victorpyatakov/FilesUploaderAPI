@@ -18,7 +18,6 @@ async def get_files() -> list[FileInfo]:
 
     Args:
 
-
     Returns:
         List of files info.
     """
