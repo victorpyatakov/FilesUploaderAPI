@@ -19,7 +19,7 @@ def setup_teardown():
 
 def test_upload_file():
     response = client.post(
-        "/api/file",
+        "/api/files",
         files={"file": ("testfile.txt", b"test content")},
         data={"guid": "1234-5678-1234-5678"},
     )
@@ -35,16 +35,16 @@ def test_get_files():
 def test_download_file():
     test_guid = "748b7b70-109d-4e0d-ad33-a312503e9e11"
     client.post(
-        "/api/file",
+        "/api/files",
         files={"file": ("testfile.txt", b"test content")},
         data={"guid": test_guid},
     )
 
-    response = client.get(f"/api/file?guid={test_guid}")
+    response = client.get(f"/api/files/{test_guid}")
     assert response.status_code == 200
 
 
 def test_download_file_not_found():
     guid = "748b7b70-109d-4e0d-ad33-a312503e9e11"
-    response = client.get(f"/api/file?guid={guid}")
+    response = client.get(f"/api/files/{guid}")
     assert response.status_code == 200

@@ -6,7 +6,8 @@ from fastapi.responses import FileResponse
 
 from app.config import settings
 from app.data_models import FileInfo
-from app.utils import get_file_info_by_guid, get_files_from_folder, save_file_to_folder
+from app.utils import (get_file_info_by_guid, get_files_from_folder,
+                       save_file_to_folder)
 
 router = APIRouter()
 
