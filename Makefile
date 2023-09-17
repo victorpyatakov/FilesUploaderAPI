@@ -15,4 +15,4 @@ isort:
 	isort app/
 
 test:
-	pytest app/tests/
+	docker-compose up pytest

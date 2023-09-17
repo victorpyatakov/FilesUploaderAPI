@@ -6,8 +6,7 @@ from fastapi.responses import FileResponse
 
 from app.config import settings
 from app.data_models import FileInfo
-from app.utils import (get_file_info_by_guid, get_files_from_folder,
-                       save_file_to_folder)
+from app.utils import get_file_info_by_guid, get_files_from_folder, save_file_to_folder
 
 router = APIRouter()
 
@@ -48,7 +47,7 @@ async def upload(guid: UUID = Form(...), file: UploadFile = File(...)) -> FileIn
     return file_info
 
 
-@router.get("/api/files/{guid}", tags=["files"], status_code=status.HTTP_200_OK)
+@router.get("/api/files/{guid}", tags=["files"], status_code=status.HTTP_200_OK, response_class=FileResponse)
 async def download(guid: UUID) -> FileResponse:
     """Download file from server folder.
 

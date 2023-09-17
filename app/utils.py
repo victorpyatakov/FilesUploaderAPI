@@ -1,7 +1,6 @@
 import os
-import shutil
 from uuid import UUID
-
+import shutil
 from fastapi import HTTPException, UploadFile
 
 from app.config import settings

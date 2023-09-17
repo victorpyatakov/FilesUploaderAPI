@@ -1,5 +1,6 @@
 services:
   web:
+    image: files_api_app
     build: .
     ports:
       - "8000:8000"
@@ -7,3 +8,12 @@ services:
       - .env
     volumes:
       - ./:/code/
+
+  pytest:
+    image: files_api_app
+    build: .
+    env_file:
+      - app/tests/.env
+    tty: true
+    command: pytest app/tests -s -vv
+
