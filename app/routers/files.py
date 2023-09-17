@@ -1,11 +1,12 @@
 import logging
 from uuid import UUID
 
-from fastapi import APIRouter, File, Form, UploadFile, status
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile, status
 from fastapi.responses import FileResponse
+
 from app.config import settings
 from app.data_models import FileInfo
-from app.utils import get_files_from_folder, save_file_to_folder, get_file_info_by_guid
+from app.utils import get_file_info_by_guid, get_files_from_folder, save_file_to_folder
 
 router = APIRouter()
 
@@ -36,7 +37,10 @@ async def upload(guid: UUID = Form(...), file: UploadFile = File(...)) -> FileIn
     Returns:
         Uploaded file info.
     """
-    await save_file_to_folder(guid, file)
+    try:
+        await save_file_to_folder(guid, file)
+    except HTTPException as ex:
+        raise ex
 
     file_info = await get_file_info_by_guid(guid)
 
@@ -53,9 +57,13 @@ async def download(guid: UUID) -> FileResponse:
     Returns:
         Downloaded file.
     """
-    file_info = await get_file_info_by_guid(guid)
+    try:
+        file_info = await get_file_info_by_guid(guid)
+    except HTTPException as ex:
+        raise ex
 
-    return FileResponse(f"{settings.upload_dir}/{file_info.guid}--{file_info.name}",
-                        media_type="application/octet-stream",
-                        filename=file_info.name,
-                        )
+    return FileResponse(
+        f"{settings.upload_dir}/{file_info.guid}--{file_info.name}",
+        media_type="application/octet-stream",
+        filename=file_info.name,
+    )

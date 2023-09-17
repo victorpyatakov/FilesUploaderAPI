@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.routers import files, checks
+from app.routers import checks, files
 from app.utils import create_dir
 
 app = FastAPI()

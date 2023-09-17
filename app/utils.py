@@ -1,7 +1,9 @@
 import os
 import shutil
 from uuid import UUID
-from fastapi import File
+
+from fastapi import File, HTTPException
+
 from app.config import settings
 from app.data_models import FileInfo
 
@@ -35,8 +37,13 @@ async def save_file_to_folder(guid: UUID, file: File) -> None:
 
     Returns:
     """
-    with open(f"{settings.upload_dir}/{guid}--{file.filename}", "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+    try:
+        with open(f"{settings.upload_dir}/{guid}--{file.filename}", "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+    except Exception:
+        raise HTTPException(
+            status_code=422, detail="During saving file something went wrong"
+        )
 
 
 async def get_file_info_by_guid(guid: UUID) -> FileInfo:
@@ -53,5 +60,6 @@ async def get_file_info_by_guid(guid: UUID) -> FileInfo:
     for file in os.listdir(settings.upload_dir):
         if str(guid) in file:
             guid, file_name = file.split("--")
-
+    if file_name is None:
+        raise HTTPException(status_code=404, detail="Item not found")
     return FileInfo(guid=guid, name=file_name)
