@@ -11,7 +11,7 @@ make build
 ```
 * Перейти на вкладку с http://localhost:8000/docs
 
-![Снимок экрана 2023-09-17 в 19.28.35.png](..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fmw%2Fhjjbg4pd41766zc64fg6np700000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_DFCA00%2F%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-09-17%20%D0%B2%2019.28.35.png) приложения
+![1.png](img%2F1.png)
 
 * Попробовать отправлять запросы на ендпониты приложения
 
@@ -60,8 +60,7 @@ make test
   "name": "string"
 }
 ```
-![Снимок экрана 2023-09-17 в 19.44.17.png](..%2F..%2F..%2FDesktop%2F%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-09-17%20%D0%B2%2019.44.17.png)
-
+![2.png](img%2F2.png)
 ### API endpoint: /api/files
 * метод: GET
 * Decription: Ендпоинт нужен, запросить информацию о существующших файлах на сервере
@@ -79,7 +78,7 @@ make test
 ]
 
 ```
-![Снимок экрана 2023-09-17 в 19.46.18.png](..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fmw%2Fhjjbg4pd41766zc64fg6np700000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_gzpvJm%2F%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-09-17%20%D0%B2%2019.46.18.png)
+![3.png](img%2F3.png)
 ### API endpoint: /api/files/{guid}
 * метод: GET
 * Decription: Ендпоинт нужен, скачать файл с сервера по его guid.
@@ -92,7 +91,6 @@ make test
 ```shell script
 {}
 ```
-![Снимок экрана 2023-09-17 в 19.46.56.png](..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fmw%2Fhjjbg4pd41766zc64fg6np700000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_L9SuAQ%2F%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-09-17%20%D0%B2%2019.46.56.png)
-
+![4.png](img%2F4.png)
 ## Authors and acknowledgment
 Victor Pyatakov
