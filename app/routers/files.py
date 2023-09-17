@@ -25,7 +25,7 @@ async def get_files() -> list[FileInfo]:
     return files
 
 
-@router.post("/api/file", tags=["file"], status_code=status.HTTP_201_CREATED)
+@router.post("/api/files", tags=["files"], status_code=status.HTTP_201_CREATED)
 async def upload(guid: UUID = Form(...), file: UploadFile = File(...)) -> FileInfo:
     """Upload file in server folder.
 
@@ -43,7 +43,7 @@ async def upload(guid: UUID = Form(...), file: UploadFile = File(...)) -> FileIn
     return file_info
 
 
-@router.get("/api/file", tags=["file"], status_code=status.HTTP_200_OK)
+@router.get("/api/files/{guid}", tags=["files"], status_code=status.HTTP_200_OK)
 async def download(guid: UUID) -> FileResponse:
     """Download file from server folder.
 

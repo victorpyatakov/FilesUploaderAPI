@@ -22,10 +22,7 @@ async def get_files_from_folder() -> list[FileInfo]:
     files = []
     for file in os.listdir(settings.upload_dir):
         guid, file_name = file.split("--")
-        files.append(FileInfo(**{
-            "guid": guid,
-            "name": file_name
-        }))
+        files.append(FileInfo(guid=guid, name=file_name))
     return files
 
 
@@ -57,7 +54,4 @@ async def get_file_info_by_guid(guid: UUID) -> FileInfo:
         if str(guid) in file:
             guid, file_name = file.split("--")
 
-    return FileInfo(**{
-        "guid": guid,
-        "name": file_name
-    })
+    return FileInfo(guid=guid, name=file_name)
